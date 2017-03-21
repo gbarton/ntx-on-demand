@@ -4,7 +4,7 @@
 
 angular.module('myApp', [])
 
-.controller('mainController', function ($scope, $http) {
+.controller('mainController', function ($scope, $http, $timeout) {
 
 
   $scope.vm = {
@@ -34,7 +34,7 @@ angular.module('myApp', [])
         err: res
       });
 
-      setTimeout(function () {
+      $timeout(function () {
         $scope.errors.pop();
       }, 5000);
 
@@ -53,17 +53,19 @@ angular.module('myApp', [])
     }).then(function successCallback(res) {
       console.log(res);
       // reset ui
-      setTimeout(function () {
+      $timeout(function () {
         $scope.vm.ready = false;
         $scope.disableButton = false;
+        console.log('toggled' + $scope.vm.ready + " " + $scope.disableButton);
       }, 2000);
     }, function errorCallback(res) {
+      console.log(res);
       $scope.errors.push({
         msg: 'error creating vm',
         err: res
       });
 
-      setTimeout(function () {
+      $timeout(function () {
         $scope.errors.pop();
       }, 5000);
 
@@ -101,9 +103,8 @@ angular.module('myApp', [])
         // got it
         $scope.vm.uri = 'https://' + res.data.ipAddresses[0] + ':8443';
         $scope.vm.ready = true;
-        $scope.disableButton = true;
       } else {
-        setTimeout(function () {
+        $timeout(function () {
           findUri();
         }, 3000);
       }
@@ -113,7 +114,7 @@ angular.module('myApp', [])
         err: res
       });
 
-      setTimeout(function () {
+      $timeout(function () {
         $scope.errors.pop();
       }, 5000);
     });
@@ -132,7 +133,7 @@ angular.module('myApp', [])
       err: res
     });
 
-    setTimeout(function () {
+    $timeout(function () {
       $scope.errors.pop();
     }, 5000);
   });
