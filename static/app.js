@@ -57,7 +57,7 @@ angular.module('myApp', [])
         $scope.vm.ready = false;
         $scope.disableButton = false;
         console.log('toggled' + $scope.vm.ready + " " + $scope.disableButton);
-      }, 2000);
+      }, 4000);
     }, function errorCallback(res) {
       console.log(res);
       $scope.errors.push({
@@ -103,6 +103,7 @@ angular.module('myApp', [])
         // got it
         $scope.vm.uri = 'https://' + res.data.ipAddresses[0] + ':8443';
         $scope.vm.ready = true;
+        $scope.disableButton = false;
       } else {
         $timeout(function () {
           findUri();
