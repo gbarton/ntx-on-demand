@@ -1,0 +1,30 @@
+{
+  "name": "ntx-on-demand",
+  "main": "server.js",
+  "description": "Simple Cert Authed UI that starts vm's on request",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-ui-bootstrap": "^2.5.0",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "chai": "latest",
+    "client-certificate-auth": "^0.3.0",
+    "debug": "latest",
+    "express": "^4.14.0",
+    "generate-ssh": "0.0.2",
+    "moment": "latest",
+    "nconf": "^0.8.4",
+    "request": "^2.75.0"
+  },
+  "devDependencies": {
+    "rmdir": "latest",
+    "mocha": "latest",
+    "sinon": "1.17.6"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC"
+}

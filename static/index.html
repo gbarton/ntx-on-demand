@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MyApp</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <!--  <link rel="stylesheet" href="app.css">-->
+
+</head>
+
+<body ng-controller="mainController">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{user}}</h1>
+        <h1>Launch personalized VM</h1>
+        <div ng-show="vm.ready == false">
+          <form ng-submit="submit()">
+            Press this awesome buttom to initialize your VM:
+            <input type="submit" id="submit" ng-disabled="disableButton" value="Submit" class="btn btn-sm btn-primary" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12" ng-show="disableButton == true && vm.ready == false">
+        <h3>Creating custom vm!</h3>
+        <small>from scratch, takes a minute...</small> <span class="info" ng-show="vm.tries % 2 == 0">checking...</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12" ng-show="vm.ready">
+        <h3>VM is ready!</h3>
+        <h3><a href="{{vm.uri}}">Launch UI</a></h3>
+        <form ng-submit="destroy()">
+          Or if your all done, destroy the VM:
+          <input type="submit" id="submit" ng-disabled="disableButton == true" value="Destroy" class="btn btn-sm btn-warning" />
+        </form>
+        <p><small>No worries, you can always make another!</small></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <p ng-repeat="e in errors">
+          Error occurred: {{e.msg}}
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="jquery.min.js"></script>
+
+  <script src="angular.js"></script>
+  <script src="bootstrap.min.js"></script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
